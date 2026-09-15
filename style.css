@@ -1104,3 +1104,104 @@ section{padding:88px 0;position:relative;}
   .timeline-step{grid-template-columns:50px 1fr;gap:16px;}
   .timeline-num{width:50px;height:50px;font-size:1.1rem;}
 }
+/* =====================================================
+   FOOTER — LES CHAMEAUX DU MÉTRO
+===================================================== */
+
+.site-footer {
+  position: relative;
+  overflow: hidden;
+}
+
+/* -----------------------------------------------------
+   GRAND LOGO EN ARRIÈRE-PLAN
+----------------------------------------------------- */
+
+.footer-watermark {
+  position: absolute;
+  width: 650px;
+  height: 650px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  object-fit: contain;
+
+  /* Transparence uniquement pour le grand logo */
+  opacity: 0.10;
+
+  /* Gris discret */
+  filter: grayscale(100%);
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+/* -----------------------------------------------------
+   CONTENU DU FOOTER AU-DESSUS DU LOGO
+----------------------------------------------------- */
+
+.site-footer .container {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* -----------------------------------------------------
+   LOGO + NOM
+----------------------------------------------------- */
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* PETIT LOGO : COULEUR, OPAQUE */
+.footer-brand img {
+  width: 58px;
+  height: 58px;
+
+  object-fit: contain;
+
+  display: block;
+
+  opacity: 1;
+  filter: none;
+
+  background: transparent;
+}
+
+/* NOM : ORANGE */
+.footer-brand .brand-text {
+  color: #d97832;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+
+/* -----------------------------------------------------
+   SÉCURITÉ : LE PETIT LOGO NE PREND PAS LE STYLE
+   DU GRAND WATERMARK
+----------------------------------------------------- */
+
+.footer-brand img.footer-watermark {
+  opacity: 1;
+  filter: none;
+}
+
+/* ---------- Masquer la navigation latérale dans le footer ---------- */
+
+.site-footer ~ .side-dots {
+  /* sécurité si la structure venait à changer */
+}
+
+/* On masque la navigation lorsque le footer est atteint */
+.side-dots.footer-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}

@@ -62,9 +62,11 @@ if (filterBar && postGrid) {
 
 // ===== Barre latérale à bulles — navigation dans la page index =====
 const sideDots = document.getElementById('sideDots');
+
 if (sideDots) {
   const dots = Array.from(sideDots.querySelectorAll('.side-dot'));
   const bubble = sideDots.querySelector('.side-dots-bubble');
+
   const sections = dots
     .map(dot => document.getElementById(dot.dataset.target))
     .filter(Boolean);
@@ -72,36 +74,89 @@ if (sideDots) {
   function moveBubble(index) {
     const dot = dots[index];
     if (!dot || !bubble) return;
-    bubble.style.top = (dot.offsetTop + dot.offsetHeight / 2 - 9) + 'px';
+
+    bubble.style.top =
+      (dot.offsetTop + dot.offsetHeight / 2 - 9) + 'px';
   }
 
   function setActive(index) {
-    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === index);
+    });
+
     moveBubble(index);
   }
 
+  // Navigation au clic
   dots.forEach((dot, i) => {
     dot.addEventListener('click', () => {
-      sections[i].scrollIntoView({ behavior: 'smooth' });
+      if (sections[i]) {
+        sections[i].scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
     });
   });
 
+  // Détection de la section visible
   if ('IntersectionObserver' in window && sections.length) {
+
     const observer = new IntersectionObserver((entries) => {
+
       entries.forEach(entry => {
+
         if (entry.isIntersecting) {
           const idx = sections.indexOf(entry.target);
-          if (idx !== -1) setActive(idx);
-        }
-      });
-    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
 
-    sections.forEach(sec => observer.observe(sec));
+          if (idx !== -1) {
+            setActive(idx);
+          }
+        }
+
+      });
+
+    }, {
+      rootMargin: '-45% 0px -45% 0px',
+      threshold: 0
+    });
+
+    sections.forEach(section => observer.observe(section));
   }
 
-  window.addEventListener('load', () => setActive(0));
+  // ===== Masquer la barre dans le footer =====
+
+  const footer = document.querySelector('.site-footer');
+
+  if (footer && 'IntersectionObserver' in window) {
+
+    const footerObserver = new IntersectionObserver((entries) => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+          sideDots.classList.add('footer-hidden');
+        } else {
+          sideDots.classList.remove('footer-hidden');
+        }
+
+      });
+
+    }, {
+      threshold: 0.05
+    });
+
+    footerObserver.observe(footer);
+  }
+
+  // Position initiale
+  window.addEventListener('load', () => {
+    setActive(0);
+  });
+
   window.addEventListener('resize', () => {
-    const activeIndex = dots.findIndex(d => d.classList.contains('active'));
+    const activeIndex =
+      dots.findIndex(d => d.classList.contains('active'));
+
     moveBubble(activeIndex === -1 ? 0 : activeIndex);
   });
 }
