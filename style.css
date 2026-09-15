@@ -1195,9 +1195,7 @@ section{padding:88px 0;position:relative;}
 
 /* ---------- Masquer la navigation latérale dans le footer ---------- */
 
-.site-footer ~ .side-dots {
-  /* sécurité si la structure venait à changer */
-}
+
 
 /* On masque la navigation lorsque le footer est atteint */
 .side-dots.footer-hidden {
