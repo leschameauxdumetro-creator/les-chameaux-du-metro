@@ -1104,102 +1104,146 @@ section{padding:88px 0;position:relative;}
   .timeline-step{grid-template-columns:50px 1fr;gap:16px;}
   .timeline-num{width:50px;height:50px;font-size:1.1rem;}
 }
-/* =====================================================
-   FOOTER — LES CHAMEAUX DU MÉTRO
-===================================================== */
 
-.site-footer {
-  position: relative;
-  overflow: hidden;
+/* =========================================================
+   PAGE "NOTRE 4L" — galerie photo + lightbox
+   ========================================================= */
+
+.l4-hero{min-height:64vh;}
+
+#l4-intro .story-grid img{
+  aspect-ratio:4/3;
+  object-fit:cover;
 }
 
-/* -----------------------------------------------------
-   GRAND LOGO EN ARRIÈRE-PLAN
------------------------------------------------------ */
-
-.footer-watermark {
-  position: absolute;
-  width: 650px;
-  height: 650px;
-
-  left: 50%;
-  top: 50%;
-
-  transform: translate(-50%, -50%);
-
-  object-fit: contain;
-
-  /* Transparence uniquement pour le grand logo */
-  opacity: 0.10;
-
-  /* Gris discret */
-  filter: grayscale(100%);
-
-  z-index: 0;
-  pointer-events: none;
+/* ---------- grille de photos ---------- */
+.l4-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
 }
+.l4-grid--wide{grid-template-columns:repeat(3,1fr);}
 
-
-/* -----------------------------------------------------
-   CONTENU DU FOOTER AU-DESSUS DU LOGO
------------------------------------------------------ */
-
-.site-footer .container {
-  position: relative;
-  z-index: 2;
+.l4-grid-item{
+  position:relative;
+  display:block;
+  padding:0;
+  margin:0;
+  border:2px solid var(--encre);
+  border-radius:var(--rayon);
+  background:var(--encre);
+  overflow:hidden;
+  cursor:zoom-in;
+  aspect-ratio:4/3;
+  box-shadow:5px 5px 0 var(--sable-fonce);
+  transition:transform .2s ease, box-shadow .2s ease;
 }
-
-
-/* -----------------------------------------------------
-   LOGO + NOM
------------------------------------------------------ */
-
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+.l4-grid-item img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .5s ease, filter .4s ease;
 }
-
-/* PETIT LOGO : COULEUR, OPAQUE */
-.footer-brand img {
-  width: 58px;
-  height: 58px;
-
-  object-fit: contain;
-
-  display: block;
-
-  opacity: 1;
-  filter: none;
-
-  background: transparent;
+.l4-grid-item::after{
+  content:"🔍";
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  width:34px;height:34px;
+  border-radius:50%;
+  background:rgba(56,47,34,0.75);
+  color:#f4ecd6;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.95rem;
+  opacity:0;
+  transform:translateY(6px);
+  transition:opacity .2s ease, transform .2s ease;
 }
-
-/* NOM : ORANGE */
-.footer-brand .brand-text {
-  color: #d97832;
-  font-size: 1.4rem;
-  font-weight: 700;
+.l4-grid-item:hover{
+  transform:translate(-3px,-3px);
+  box-shadow:8px 8px 0 var(--sable-fonce);
 }
+.l4-grid-item:hover img{transform:scale(1.08);}
+.l4-grid-item:hover::after{opacity:1;transform:translateY(0);}
+.l4-grid-item:focus-visible{outline:3px solid var(--terre);outline-offset:3px;}
 
-
-/* -----------------------------------------------------
-   SÉCURITÉ : LE PETIT LOGO NE PREND PAS LE STYLE
-   DU GRAND WATERMARK
------------------------------------------------------ */
-
-.footer-brand img.footer-watermark {
-  opacity: 1;
-  filter: none;
+/* ---------- lightbox plein écran ---------- */
+.l4-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:200;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(20,14,8,0.92);
+  padding:40px;
 }
+.l4-lightbox.open{display:flex;}
+.l4-lightbox-figure{
+  margin:0;
+  max-width:min(1100px, 90vw);
+  max-height:88vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+}
+.l4-lightbox-figure img{
+  max-width:100%;
+  max-height:78vh;
+  width:auto;
+  height:auto;
+  border:3px solid var(--sable-carte);
+  border-radius:var(--rayon);
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  object-fit:contain;
+}
+.l4-lightbox-figure figcaption{
+  font-family:var(--font-mono);
+  font-size:0.85rem;
+  color:#f0e6cd;
+  letter-spacing:0.03em;
+}
+.l4-lightbox-close{
+  position:absolute;
+  top:22px;
+  right:26px;
+  width:44px;height:44px;
+  border-radius:50%;
+  border:2px solid #f4ecd6;
+  background:rgba(244,236,214,0.08);
+  color:#f4ecd6;
+  font-size:1.2rem;
+  cursor:pointer;
+  transition:background .2s ease, transform .2s ease;
+}
+.l4-lightbox-close:hover{background:var(--terre);transform:scale(1.05);}
+.l4-lightbox-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:52px;height:52px;
+  border-radius:50%;
+  border:2px solid #f4ecd6;
+  background:rgba(244,236,214,0.08);
+  color:#f4ecd6;
+  font-size:1.8rem;
+  line-height:1;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s ease, transform .2s ease;
+}
+.l4-lightbox-nav:hover{background:var(--terre);}
+.l4-lightbox-prev{left:22px;}
+.l4-lightbox-next{right:22px;}
 
-/* ---------- Masquer la navigation latérale dans le footer ---------- */
-
-
-
-/* On masque la navigation lorsque le footer est atteint */
-.side-dots.footer-hidden {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
+@media (max-width:900px){
+  .l4-grid, .l4-grid--wide{grid-template-columns:repeat(2,1fr);}
+  .l4-lightbox{padding:16px;}
+  .l4-lightbox-nav{width:42px;height:42px;font-size:1.4rem;}
+  .l4-lightbox-prev{left:8px;}
+  .l4-lightbox-next{right:8px;}
+  .l4-lightbox-close{top:12px;right:12px;}
+}
+@media (max-width:560px){
+  .l4-grid, .l4-grid--wide{grid-template-columns:1fr;}
 }
