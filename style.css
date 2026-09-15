@@ -440,7 +440,9 @@ section{padding:88px 0;position:relative;}
 
 /* ---------- footer ---------- */
 .site-footer{
-  background:var(--encre);
+  background:
+    linear-gradient(180deg, rgba(130,126,112,0.38), rgba(130,126,112,0.38)),
+    var(--encre);
   color:var(--sable-clair);
   padding:56px 0 26px;
   position:relative;
@@ -448,13 +450,14 @@ section{padding:88px 0;position:relative;}
 }
 .footer-watermark{
   position:absolute;
-  right:-60px;
-  bottom:-60px;
-  height:340px;
-  width:340px;
-  opacity:0.06;
+  right:-100px;
+  bottom:-140px;
+  height:620px;
+  width:620px;
+  opacity:0.16;
   filter:brightness(0) invert(1);
   pointer-events:none;
+  z-index:0;
 }
 .footer-grid{
   display:grid;
@@ -464,8 +467,18 @@ section{padding:88px 0;position:relative;}
   position:relative;
   z-index:1;
 }
-.footer-brand{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
-.footer-brand img{height:42px;filter:brightness(0) invert(1);}
+.footer-brand{display:flex;align-items:center;gap:14px;margin-bottom:14px;position:relative;z-index:1;}
+.footer-brand img{
+  height:58px;
+  width:auto;
+  filter:none;
+  background:#f4ecd6;
+  border:2px solid var(--encre);
+  border-radius:50%;
+  padding:6px;
+  flex-shrink:0;
+}
+.footer-brand-highlight{color:var(--sable-fonce);}
 .site-footer h4{
   font-family:var(--font-mono);
   font-size:0.78rem;
@@ -693,6 +706,13 @@ section{padding:88px 0;position:relative;}
 
 @media (max-width:1100px){
   .side-dots{display:none;}
+}
+
+/* ---------- Masquer la navigation latérale dans le footer ---------- */
+.side-dots.footer-hidden{
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s ease;
 }
 
 /* ---------- équipage ---------- */

@@ -99,6 +99,22 @@ if (sideDots) {
     sections.forEach(sec => observer.observe(sec));
   }
 
+  // ===== Masquer la barre dans le footer =====
+  const footer = document.querySelector('.site-footer');
+  if (footer && 'IntersectionObserver' in window) {
+    const footerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          sideDots.classList.add('footer-hidden');
+        } else {
+          sideDots.classList.remove('footer-hidden');
+        }
+      });
+    }, { threshold: 0.05 });
+
+    footerObserver.observe(footer);
+  }
+
   window.addEventListener('load', () => setActive(0));
   window.addEventListener('resize', () => {
     const activeIndex = dots.findIndex(d => d.classList.contains('active'));
