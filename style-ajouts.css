@@ -1,0 +1,74 @@
+
+/* =========================================================
+   AJOUTS — version marketing (à coller à la FIN de style.css)
+   ========================================================= */
+
+/* ---------- bouton "Comment nous soutenir ?" dans la barre du haut ---------- */
+.nav-links a[href="soutenir.html"]{
+  background:var(--terre);color:#f4ecd6;
+  padding:9px 18px;border:2px solid var(--encre);border-radius:var(--rayon);
+  box-shadow:3px 3px 0 var(--encre);
+  animation:cta-pulse 2.4s ease-in-out infinite;
+}
+.nav-links a[href="soutenir.html"]::after{display:none;}
+.nav-links a[href="soutenir.html"].current{color:#f4ecd6;}
+.nav-links a[href="soutenir.html"]:hover{transform:translate(-1px,-1px);}
+@keyframes cta-pulse{
+  0%,100%{box-shadow:3px 3px 0 var(--encre),0 0 0 0 rgba(168,69,31,.55);}
+  50%{box-shadow:3px 3px 0 var(--encre),0 0 0 9px rgba(168,69,31,0);}
+}
+@media (prefers-reduced-motion: reduce){.nav-links a[href="soutenir.html"]{animation:none;}}
+
+/* ---------- hero accueil ---------- */
+.hero-home{align-items:center;}
+.hero-home h1{font-size:clamp(3.6rem,13vw,9.5rem);line-height:.88;}
+.hero-home .hero-sub,
+.hero-home .hero-sub strong{color:#fff;}
+.hero-home .hero-sub{max-width:720px;font-size:1.18rem;}
+.hero-home .hero-sub + .hero-sub{margin-top:-8px;}
+
+/* ---------- nos motivations ---------- */
+.motiv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+.motiv-card{background:var(--sable-carte);border:2px solid var(--encre);border-radius:var(--rayon);padding:26px 24px;box-shadow:5px 5px 0 var(--sable-fonce);}
+.motiv-logo{height:70px;display:flex;align-items:center;margin-bottom:14px;}
+.motiv-logo img{max-height:100%;max-width:170px;width:auto;object-fit:contain;}
+.motiv-card h3{font-size:1.4rem;margin-bottom:8px;}
+.motiv-card p{margin:0;color:var(--encre-douce);font-size:.95rem;}
+.motiv-num{font-family:var(--font-display);font-size:2.4rem;color:var(--terre);line-height:1;}
+
+/* ---------- logo en grand (pourquoi Chameaux du métro) ---------- */
+.story-grid img.story-logo{border:none;box-shadow:none;background:none;max-width:440px;width:100%;margin:0 auto;}
+
+/* ---------- logos dans les blocs associations ---------- */
+.solidaire-title{display:flex;align-items:center;gap:16px;}
+.solidaire-logo{height:42px;width:auto;max-width:120px;object-fit:contain;background:#fff;border:2px solid var(--encre);border-radius:var(--rayon);padding:4px 8px;}
+
+/* ---------- soutenir : hero ---------- */
+.join-hero{padding:70px 0;background:var(--sable-carte);border-bottom:2px solid var(--encre);}
+.join-hero .container{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center;}
+.join-hero h1{font-size:clamp(2.6rem,6vw,4.4rem);text-transform:uppercase;margin:14px 0 16px;}
+.join-hero p{color:var(--encre-douce);font-size:1.05rem;}
+.join-pills{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 26px;}
+.join-pills span{font-family:var(--font-mono);font-size:.78rem;border:1.5px solid var(--terre);color:var(--terre);border-radius:999px;padding:5px 12px;background:rgba(255,255,255,.4);}
+.join-photos{position:relative;min-height:380px;}
+.join-photos img{position:absolute;width:72%;aspect-ratio:4/3;object-fit:cover;border:3px solid var(--encre);border-radius:var(--rayon);box-shadow:8px 8px 0 var(--sable-fonce);}
+.join-photos img:first-child{top:0;left:0;transform:rotate(-3deg);}
+.join-photos img:last-child{bottom:0;right:0;transform:rotate(2.5deg);}
+
+/* ---------- soutenir : pourquoi + avantages ---------- */
+.why-block{margin-bottom:54px;}
+.why-block h3{font-size:clamp(1.8rem,3.4vw,2.5rem);margin:14px 0 16px;}
+.perks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:40px;}
+.perk{background:var(--sable-carte);border:2px solid var(--encre);border-radius:var(--rayon);padding:22px;}
+.perk-ico{font-size:1.7rem;margin-bottom:8px;}
+.perk h4{font-family:var(--font-display);font-size:1.25rem;letter-spacing:.02em;margin:0 0 6px;}
+.perk p{margin:0;font-size:.92rem;color:var(--encre-douce);}
+.photo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:44px;}
+.photo-strip figure{margin:0;}
+.photo-strip img{aspect-ratio:4/3;width:100%;object-fit:cover;border:2px solid var(--encre);border-radius:var(--rayon);box-shadow:4px 4px 0 var(--sable-fonce);}
+.photo-strip figcaption{font-family:var(--font-mono);font-size:.75rem;color:var(--encre-douce);margin-top:8px;}
+
+@media (max-width:900px){
+  .motiv-grid,.perks-grid,.photo-strip,.join-hero .container{grid-template-columns:1fr;}
+  .join-photos{min-height:320px;}
+}
