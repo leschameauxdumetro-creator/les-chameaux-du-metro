@@ -163,6 +163,44 @@ if (sponsorForm) {
   });
 }
 
+// ===== Widget de don HelloAsso (modale) =====
+(function () {
+  const haModal = document.getElementById('haWidgetModal');
+  if (!haModal) return;
+
+  const closeHaBtn = document.getElementById('closeHaWidgetBtn');
+  const openBtns = document.querySelectorAll('[data-open-ha]');
+
+  function openHaModal() {
+    haModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeHaModal() {
+    haModal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  openBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openHaModal();
+    });
+  });
+
+  closeHaBtn?.addEventListener('click', closeHaModal);
+
+  // Ferme en cliquant sur le fond (mais pas sur l'iframe)
+  haModal.addEventListener('click', (e) => {
+    if (e.target === haModal) closeHaModal();
+  });
+
+  // Ferme avec la touche Échap
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && haModal.style.display === 'flex') closeHaModal();
+  });
+})();
+
 // ===== Galerie "Notre 4L" — lightbox plein écran =====
 (function () {
   const lightbox = document.getElementById('l4Lightbox');
