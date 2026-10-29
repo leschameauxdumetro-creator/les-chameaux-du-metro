@@ -1,6 +1,5 @@
-
 /* =========================================================
-   AJOUTS — version marketing (à coller à la FIN de style.css)
+   AJOUTS — version marketing
    ========================================================= */
 
 /* ---------- bouton "Comment nous soutenir ?" dans la barre du haut ---------- */
@@ -21,11 +20,21 @@
 
 /* ---------- hero accueil ---------- */
 .hero-home{align-items:center;}
+.hero-home::before{
+  background:linear-gradient(180deg, rgba(20,14,8,0.55) 0%, rgba(20,14,8,0.75) 50%, rgba(20,14,8,0.88) 100%);
+}
 .hero-home h1{font-size:clamp(3.6rem,13vw,9.5rem);line-height:.88;}
 .hero-home .hero-sub,
-.hero-home .hero-sub strong{color:#fff;}
+.hero-home .hero-sub strong{color:#fff;text-shadow:0 2px 10px rgba(0,0,0,0.7);}
 .hero-home .hero-sub{max-width:720px;font-size:1.18rem;}
 .hero-home .hero-sub + .hero-sub{margin-top:-8px;}
+
+/* ---------- hero "Notre 4L" lisible ---------- */
+.l4-hero::before{
+  background:linear-gradient(180deg, rgba(20,14,8,0.5) 0%, rgba(20,14,8,0.75) 55%, rgba(20,14,8,0.88) 100%);
+}
+.l4-hero .hero-sub,
+.l4-hero .hero-sub strong{color:#fff;text-shadow:0 2px 10px rgba(0,0,0,0.7);}
 
 /* ---------- nos motivations ---------- */
 .motiv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
