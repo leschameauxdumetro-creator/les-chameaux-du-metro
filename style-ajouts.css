@@ -118,3 +118,152 @@
 @media (max-width:520px){
   .qr-box{flex-direction:column;align-items:flex-start;}
 }
+
+/* =========================================================
+   PAGE SPONSORS — niveaux de partenaires
+   ========================================================= */
+
+/* ---------- badges de niveau ---------- */
+.tier-badge{
+  display:inline-block;
+  font-family:var(--font-mono);
+  font-size:.7rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--oasis);
+  border:1.5px solid var(--oasis);
+  border-radius:999px;
+  padding:3px 11px;
+  background:rgba(255,255,255,.4);
+}
+.tier-badge--main{
+  color:#f4ecd6;
+  background:var(--terre);
+  border-color:var(--encre);
+}
+.tier-badge--soft{
+  color:var(--encre-douce);
+  border-color:var(--sable-fonce);
+}
+
+/* ---------- sponsor principal (type 2) ---------- */
+.sponsor-main{
+  background:var(--sable-carte);
+  border:3px solid var(--encre);
+  border-radius:var(--rayon);
+  box-shadow:10px 10px 0 var(--terre);
+  padding:40px;
+}
+.sponsor-main-top{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:44px;
+  align-items:center;
+}
+.sponsor-main-logo{
+  background:#fff;
+  border:2px solid var(--encre);
+  border-radius:var(--rayon);
+  padding:32px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:240px;
+}
+.sponsor-main-logo img{max-width:100%;max-height:200px;width:auto;object-fit:contain;}
+.sponsor-main-body h3{font-size:clamp(2rem,4vw,2.8rem);margin:14px 0 12px;}
+.sponsor-main-body p{color:var(--encre-douce);font-size:1.02rem;}
+.sponsor-main-body p:last-child{margin-bottom:0;}
+.sponsor-main-info{
+  margin:36px 0 0;
+  padding-top:30px;
+  border-top:2px dashed var(--sable-fonce);
+}
+.sponsor-main-info img{
+  width:100%;
+  max-width:860px;
+  margin:0 auto;
+  border:2px solid var(--encre);
+  border-radius:var(--rayon);
+  background:#fff;
+}
+.sponsor-main-info figcaption{
+  text-align:center;
+  font-family:var(--font-mono);
+  font-size:.78rem;
+  color:var(--encre-douce);
+  margin-top:12px;
+}
+
+/* ---------- partenaires officiels (type 1) ---------- */
+.sponsor-duo{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:30px;
+}
+.sponsor-card{
+  background:var(--sable-clair);
+  border:2px solid var(--encre);
+  border-radius:var(--rayon);
+  padding:28px;
+  box-shadow:6px 6px 0 var(--sable-fonce);
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:14px;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.sponsor-card:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--sable-fonce);}
+.sponsor-card-logo{
+  width:100%;
+  height:160px;
+  background:#fff;
+  border:2px solid var(--encre);
+  border-radius:var(--rayon);
+  padding:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.sponsor-card-logo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;}
+.sponsor-card h3{font-size:1.6rem;}
+.sponsor-card p{margin:0;color:var(--encre-douce);font-size:.96rem;}
+
+/* ---------- soutiens (type 0) ---------- */
+.sponsor-tiles{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,260px));
+  gap:24px;
+}
+.sponsor-tile{
+  background:var(--sable-carte);
+  border:2px solid var(--encre);
+  border-radius:var(--rayon);
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:12px;
+  transition:transform .15s ease;
+}
+.sponsor-tile:hover{transform:translateY(-4px);}
+.sponsor-tile-logo{
+  width:100%;
+  height:100px;
+  background:#fff;
+  border:2px solid var(--encre);
+  border-radius:var(--rayon);
+  padding:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.sponsor-tile-logo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;}
+.sponsor-tile h3{font-size:1.2rem;}
+
+@media (max-width:900px){
+  .sponsor-main{padding:24px;box-shadow:6px 6px 0 var(--terre);}
+  .sponsor-main-top,.sponsor-duo{grid-template-columns:1fr;gap:28px;}
+  .sponsor-main-logo{min-height:180px;}
+}
